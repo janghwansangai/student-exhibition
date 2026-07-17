@@ -1,0 +1,42 @@
+rules_version = '2';
+
+// 좋아요·댓글 악용 방지 규칙.
+// - 좋아요는 딱 +1 씩만, 다른 필드 조작 불가
+// - 댓글은 글자 수 제한, 수정/삭제 불가
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /apps/{appId} {
+      allow read: if true;
+
+      // 최초 생성: likes 필드 하나, 값은 1
+      allow create: if request.resource.data.keys().hasOnly(['likes'])
+                    && request.resource.data.likes == 1;
+
+      // 수정: likes 만 정확히 1 증가 (임의 값·다른 필드 차단)
+      allow update: if request.resource.data.keys().hasOnly(['likes'])
+                    && request.resource.data.likes == resource.data.likes + 1;
+
+      allow delete: if false;
+
+      match /comments/{commentId} {
+        allow read: if true;
+
+        allow create: if request.resource.data.keys().hasOnly(['nick', 'text', 'ts'])
+                      && request.resource.data.text is string
+                      && request.resource.data.text.size() > 0
+                      && request.resource.data.text.size() <= 200
+                      && request.resource.data.nick is string
+                      && request.resource.data.nick.size() <= 20
+                      && request.resource.data.ts == request.time;
+
+        allow update, delete: if false;
+      }
+    }
+
+    // 그 외 모든 접근 차단
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

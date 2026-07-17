@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>우리 반 웹 프로그램 전시관</title>
+  <meta name="description" content="학생들이 AI와 함께 만든 웹 프로그램 갤러리" />
+
+  <!-- 폰트 (명조 serif = 미술관 느낌) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="wall">
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow"><i class="ti ti-building-arch" aria-hidden="true"></i> STUDENT WEB GALLERY</p>
+        <h1 id="galleryTitle">우리 반 웹 프로그램 전시관</h1>
+        <p id="gallerySubtitle" class="subtitle">학생들이 AI와 함께 만든 웹 프로그램 갤러리</p>
+        <p id="statusLine" class="status">작품을 불러오는 중…</p>
+      </div>
+    </header>
+
+    <main id="gallery" class="gallery" aria-live="polite"></main>
+
+    <footer class="wall-footer">
+      <p id="modeNote" class="mode-note"></p>
+      <p class="credit">이름 가운데 글자는 개인정보 보호를 위해 <b>*</b>로 가렸습니다.</p>
+    </footer>
+  </div>
+
+  <!-- 댓글 패널 -->
+  <div id="overlay" class="overlay" hidden>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+      <button class="panel-close" id="panelClose" aria-label="닫기"><i class="ti ti-x"></i></button>
+      <h2 id="panelTitle" class="panel-title"></h2>
+      <p id="panelMeta" class="panel-meta"></p>
+
+      <div class="comment-form">
+        <input id="nickInput" type="text" maxlength="20" placeholder="닉네임 (선택)" />
+        <div class="comment-row">
+          <input id="commentInput" type="text" maxlength="200" placeholder="따뜻한 응원 댓글을 남겨 주세요" />
+          <button id="commentSubmit" class="btn-primary">등록</button>
+        </div>
+      </div>
+
+      <ul id="commentList" class="comment-list"></ul>
+    </div>
+  </div>
+
+  <!-- Firebase (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

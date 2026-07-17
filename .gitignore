@@ -1,0 +1,17 @@
+# 시스템/에디터
+.DS_Store
+Thumbs.db
+*.log
+
+# 비밀 값 (혹시 추가할 경우 대비)
+.env
+.env.*
+!.env.example
+
+# 의존성/빌드 (혹시 도구를 쓸 경우 대비)
+node_modules/
+dist/
+
+# Firebase 로컬 캐시
+.firebase/
+firebase-debug.log
