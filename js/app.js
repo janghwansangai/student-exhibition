@@ -409,7 +409,7 @@
       const desc = DESCRIPTION_OVERRIDES[oKey] || rawDesc || "설명이 아직 없습니다.";
 
       const rawUrl = (row[ci.url] || "").trim();
-      const url = isHttpUrl(rawUrl) ? rawUrl : "";
+      const url = isHttpUrl(rawUrl) ? rawUrl : (URL_OVERRIDES[oKey] || URL_OVERRIDES[name] || "");
 
       list.push({
         artist: maskName(name),
