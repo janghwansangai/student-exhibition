@@ -39,12 +39,12 @@ const CONFIG = {
      설정 방법은 README.md 참고. apiKey 는 비밀이 아니므로 여기 넣어도 됩니다.
      ----------------------------------------------------------------- */
   firebase: {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+    apiKey: "AIzaSyDUvt66AguX-ziRKrY3JAz1Kobf6xVCp6I",
+    authDomain: "student-gallery-2026.firebaseapp.com",
+    projectId: "student-gallery-2026",
+    storageBucket: "student-gallery-2026.firebasestorage.app",
+    messagingSenderId: "968116022588",
+    appId: "1:968116022588:web:e76fe71047b224526c4239"
   }
 };
 
